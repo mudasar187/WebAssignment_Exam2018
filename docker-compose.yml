@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+  mongodb:
+    image: mongo
+    container_name: "db_app"
+    ports:
+      - "27017:27017"
+
+  frontend:
+    image: ahmmud16/webclient
+    container_name: "web_app"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:3000"
+    environment:
+      - NODE_ENV=docker
+    depends_on:
+      - mongodb
