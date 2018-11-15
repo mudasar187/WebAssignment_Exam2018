@@ -1,10 +1,14 @@
 switch (process.env.NODE_ENV) {
-  case "heroku": {
+  case "production": {
     module.exports = require("./keys_heroku");
     break;
   }
-  case "dev": {
+  case "development": {
     module.exports = require("./keys_dev");
+    break;
+  }
+  case "docker": {
+    module.exports = require("./keys_docker");
     break;
   }
 }

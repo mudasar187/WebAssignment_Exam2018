@@ -1,10 +1,13 @@
 import _ from 'lodash';
-import { WEB_SOCKET_URL, PORT } from '../config';
+// import { WEB_SOCKET_URL, PORT } from '../config';
 import actions from '../redux/actions';
 
 import ApplicationService from './ApplicationService';
 
 let _webSocketService = null;
+
+const WEB_SOCKET_URL = require('../config/keys').webSocketURL;
+const WEB_SOCKET_PORT = require('../config/keys').webSocketPORT;
 
 /*
     Service manages the Websocket connections
@@ -36,7 +39,7 @@ class WebSocketService {
             }
             console.log("WebSocketService: connecting...");
             this.connect();
-        }, PORT)
+        }, WEB_SOCKET_PORT)
     }
 
     /*
@@ -185,7 +188,10 @@ class WebSocketService {
         Connects to websockets
     */
     connect() {
-        const webSocketConnection = new WebSocket(WEB_SOCKET_URL+":"+PORT);
+        console.log(WEB_SOCKET_URL);
+        console.log(WEB_SOCKET_PORT);
+        console.log(WEB_SOCKET_URL+WEB_SOCKET_PORT);
+        const webSocketConnection = new WebSocket(WEB_SOCKET_URL);
         this.webSocketConnection = webSocketConnection;
 
         this.webSocketConnection.onopen = () => {
