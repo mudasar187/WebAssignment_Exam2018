@@ -1,4 +1,4 @@
 module.exports = {
-  webSocketURL: "ws://" + window.location.host,
+  webSocketURL: "ws://" + window.origin.host,
   webSocketPORT: process.env.PORT
 };
