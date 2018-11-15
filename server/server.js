@@ -42,7 +42,7 @@ app.use(passport.session());
 app.use("/auth", authRoutes);
 app.use("/quizzes", quizzesRoutes);
 
-// Add fefault data to database
+// Add default quiz data to database
 quizSeeder.addDefaultDataToDatabase();
 
 // Serve static files if in production or running in docker
