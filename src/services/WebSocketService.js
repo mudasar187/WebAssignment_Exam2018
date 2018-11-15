@@ -1,5 +1,4 @@
 import _ from 'lodash';
-// import { WEB_SOCKET_URL, PORT } from '../config';
 import actions from '../redux/actions';
 
 import ApplicationService from './ApplicationService';
