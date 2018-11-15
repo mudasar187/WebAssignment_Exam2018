@@ -8,6 +8,7 @@ const dbConnection = require("./database");
 const MongoStore = require("connect-mongo")(session);
 const passport = require("./passport");
 const path = require("path");
+const quizSeeder = require('./seeder/quizSeeder');
 
 const app = express();
 
@@ -41,6 +42,10 @@ app.use(passport.session());
 app.use("/auth", authRoutes);
 app.use("/quizzes", quizzesRoutes);
 
+// Add fefault data to database
+quizSeeder.addDefaultDataToDatabase();
+
+// Serve static files if in production or running in docker
 if (process.env.NODE_ENV === "production" || process.env.NODE_ENV === "docker") {
   // Set static folder
   app.use('/', express.static("build"));

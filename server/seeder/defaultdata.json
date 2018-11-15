@@ -1,0 +1,46 @@
+[
+  {
+    "name": "Capitals",
+    "players": [],
+    "maxPlayersCount": 2,
+    "questions": [
+      {
+        "name": "Whats the name of capital in Norway?",
+        "answers": ["Oslo", "Dubai", "Stockholm"],
+        "answer_id": 0
+      },
+      {
+        "name": "Whats the name of capital in Germany?",
+        "answers": ["Copenhagen", "Berlin", "Jakarta"],
+        "answer_id": 1
+      },
+      {
+        "name": "Whats the capital in USA?",
+        "answers": ["Miami", "New York", "Washington DC"],
+        "answer_id": 2
+      }
+    ]
+  },
+  {
+    "name": "Programming",
+    "players": [],
+    "maxPlayersCount": 3,
+    "questions": [
+      {
+        "name": "Is JavaScript same as Java?",
+        "answers": ["No", "Yes", "Maybe"],
+        "answer_id": 0
+      },
+      {
+        "name": "Do we have Spring in React?",
+        "answers": ["Yes", "No", "Its coming"],
+        "answer_id": 1
+      },
+      {
+        "name": "Is assembly faster then JavaScript?",
+        "answers": ["No", "Maybe", "Yes"],
+        "answer_id": 2
+      }
+    ]
+  }
+]

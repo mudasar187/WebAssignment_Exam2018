@@ -31,3 +31,7 @@ module.exports = Quiz;
 module.exports.createQuiz = (quiz, callback) => {
 	quiz.save(callback);
 }
+
+module.exports.getAllQuizzes = (callback) => {
+	Quiz.find(callback);
+};
