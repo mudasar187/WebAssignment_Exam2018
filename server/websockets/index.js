@@ -281,7 +281,7 @@ class WebsocketService {
                                         questionAsk();
 
                                         // Ask other questions after interval has passed
-                                        const interval = setInterval(questionAsk, 5000);
+                                        const interval = setInterval(questionAsk, 10000);
                                     });
                                 })
                             });

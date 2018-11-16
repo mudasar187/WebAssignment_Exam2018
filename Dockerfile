@@ -10,6 +10,6 @@ COPY . .
 
 EXPOSE 3000
 
-RUN npm run build-docker
+RUN npm run build-prod
 
 CMD npm run api-docker

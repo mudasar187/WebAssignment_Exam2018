@@ -8,7 +8,7 @@ const dbConnection = require("./database");
 const MongoStore = require("connect-mongo")(session);
 const passport = require("./passport");
 const path = require("path");
-const quizSeeder = require('./seeder/quizSeeder');
+const quizSeeder = require("./seeder/quizSeeder");
 
 const app = express();
 
@@ -28,7 +28,7 @@ app.use(bodyParser.json());
 app.use(
   session({
     secret: "sessionsecret",
-    store: new MongoStore({ mongooseConnection: dbConnection }),
+    // store: new MongoStore({ mongooseConnection: dbConnection }), // Only if you want to save user session in database
     resave: false,
     saveUninitialized: false
   })
@@ -42,17 +42,17 @@ app.use(passport.session());
 app.use("/auth", authRoutes);
 app.use("/quizzes", quizzesRoutes);
 
-// Add default quiz data to database
+// Add default quiz data to database, if you want to add more quizzes, just add in defaultdata.json file
 quizSeeder.addDefaultDataToDatabase();
 
 // Serve static files if in production or running in docker
-if (process.env.NODE_ENV === "production" || process.env.NODE_ENV === "docker") {
+if ( process.env.NODE_ENV === "production" || process.env.NODE_ENV === "docker" ) {
   // Set static folder
-  app.use('/', express.static("build"));
+  app.use("/", express.static("build"));
 
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "build", "index.html"));
-});
+  });
 }
 
 // Starting Server

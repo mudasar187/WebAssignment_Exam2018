@@ -4,7 +4,7 @@ import quizzes from "./quizzes";
 import leaderboard from "./leaderboard";
 
 export default combineReducers({
-    user,
-    quizzes,
-    leaderboard
+  user,
+  quizzes,
+  leaderboard
 });

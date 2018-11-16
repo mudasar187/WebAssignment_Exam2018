@@ -32,13 +32,13 @@
   },
   "scripts": {
     "start-dev": "NODE_ENV=development PORT=8080 react-scripts start",
-    "build-docker": "NODE_ENV=docker react-scripts build",
     "build-prod": "NODE_ENV=production react-scripts build",
     "api-dev": "NODE_ENV=development nodemon ./server/server.js",
     "api-prod": "NODE_ENV=production nodemon ./server/server.js",
     "api-docker": "NODE_ENV=docker nodemon ./server/server.js",
     "api-local": "NODE_ENV=local nodemon ./server/server.js",
-    "dev": "concurrently \"react-scripts start\" \"nodemon server/server.js\""
+    "mlab-dev": "concurrently \"npm run start-dev\" \"npm run api-dev\"",
+    "local-dev": "concurrently \"npm run start-dev\" \"npm run api-local\""
   },
   "devDependencies": {
     "concurrently": "^3.5.1",

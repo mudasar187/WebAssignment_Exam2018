@@ -126,7 +126,7 @@ class Quiz extends Component {
                 {Object.keys(activeQuestion).length && activeQuestion.question ? (
                     <div>
                         <h2>{activeQuestion.question.name}</h2>
-                        <h3><Countdown date={Date.now() + 5000} /></h3>
+                        <h3><Countdown date={Date.now() + 10000} /></h3>
                         <ListGroup>
                             {activeQuestion.question.answers.map((answer, answerId) => (
                                 <ListGroupItem bsStyle={this.getAnswerStyle(answerId)} key={answerId} onClick={() => this.handleAnswerClick(answerId)} >
