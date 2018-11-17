@@ -7,6 +7,8 @@ switch (process.env.NODE_ENV) {
     module.exports = require("./keys_dev");
     break;
   }
+  default:
+    break;
 }
 /*
  which websockets url to use based on which environment you are running on, 

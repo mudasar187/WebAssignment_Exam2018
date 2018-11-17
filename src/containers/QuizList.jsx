@@ -53,7 +53,7 @@ class QuizList extends Component {
             <ListGroup>
                 {Object.keys(data).map((quizId, index) => (
                     <ListGroupItem disabled={data[quizId]['playersCount'] >= 2} key={index} onClick={() => this.handleQuizClick(data[quizId])} >
-                        {data[quizId]['name']} <Badge>{data[quizId]['playersCount']}/{data[quizId]['maxPlayersCount']}</Badge>
+                        {data[quizId]['name']} <Badge>{data[quizId]['playersCount']}&nbsp;/&nbsp;{data[quizId]['maxPlayersCount']}</Badge>
                     </ListGroupItem>
                 ))}
             </ListGroup>

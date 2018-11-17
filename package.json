@@ -1,6 +1,8 @@
 {
   "name": "quiz_app",
-  "version": "0.0.1",
+  "version": "0.0.8",
+  "description": "A multiplayer online quiz game",
+  "author": "Mudasar Ahmad",
   "dependencies": {
     "axios": "^0.17.1",
     "bcryptjs": "^2.4.3",

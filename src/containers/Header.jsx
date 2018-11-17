@@ -46,6 +46,7 @@ class Header extends Component {
                             }}>
                                 Leaderboard
                             </Button>
+                            &nbsp;
                             <Button bsStyle="danger" onClick={() => {
                                 logoutAction();
                                 history.push("/");
@@ -60,6 +61,7 @@ class Header extends Component {
                             }}>
                                 Sign up
                             </Button>
+                            &nbsp;
                             <Button bsStyle="primary" onClick={() => {
                                 history.push("/login");
                             }}>

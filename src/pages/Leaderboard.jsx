@@ -11,7 +11,7 @@ export default class Leaderboard extends Component{
 				<Row>
 					<Header />
 					<Jumbotron>
-						<h2>Leaderboard</h2>
+							<h2 className="text-center">Leaderboard</h2>
 						<LeaderboardContainer />
 					</Jumbotron>
 					<Footer />

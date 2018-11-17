@@ -1,4 +1,3 @@
-const http = require("http");
 const SocketServer = require("ws").Server;
 const express = require("express");
 const bodyParser = require("body-parser");
