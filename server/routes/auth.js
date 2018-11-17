@@ -12,7 +12,19 @@ router.post("/signup", (req, res) => {
   console.log("user signup");
 
   const { name, password } = req.body;
-  // ADD VALIDATION
+
+  if (name.length <= 3) {
+    res.json({
+      error: `Username should be minimum 4 characters`
+    });
+  }
+
+  if (password.length <= 3) {
+    res.json({
+      error: `Password should be minimum 4 characters`
+    });
+  }
+
   User.findOne({ name: name }, (err, user) => {
     if (err) {
       console.log("User.js post error: ", err);

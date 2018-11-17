@@ -25,6 +25,24 @@ class LoginForm extends Component {
 
     event.preventDefault();
 
+    if(user.name.length <= 3) {
+      return this.setState({
+        message: {
+          body: 'Username should be minimum 4 characters',
+          type: 'error'
+        }
+      })
+    }
+
+    if(user.password.length <= 3) {
+      return this.setState({
+        message: {
+          body: 'Password should be minimum 4 characters',
+          type: 'error'
+        }
+      })
+    }
+
     ApplicationService.register(user.name, user.password)
       .then(_ => {
         ApplicationService.login(user.name, user.password).then(() => {
@@ -60,7 +78,7 @@ class LoginForm extends Component {
           <FormControl
             className="text-center"
             placeholder={"Username"}
-            value={_.get(user, "name", "")}
+            value={_.get(user, "name")}
             onChange={this.onTextFieldChange}
             type={"text"}
             name={"name"}

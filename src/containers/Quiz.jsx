@@ -97,36 +97,36 @@ class Quiz extends Component {
 
         return (
             <Col>
-                <h4>{quizName}</h4>
+                <h2 className="text-center">{quizName}</h2>
                 {isWaiting ? (
-                    <Alert bsStyle="info">
+                    <Alert bsStyle="info" className="text-center">
                         Wait for other user to join...
                     </Alert>
                 ) : null}
                 {isInProgress ? (
-                    <Alert bsStyle="warning">
+                    <Alert bsStyle="warning" className="text-center">
                         Quiz in progress.
                     </Alert>
                 ) : null}
                 {isUnexpectedFinished ? (
-                    <Alert bsStyle="info">
+                    <Alert bsStyle="info" className="text-center">
                         Other player left quiz.
                     </Alert>
                 ) : null}
                 {isFinished ? (
-                    <Alert bsStyle="success">
+                    <Alert bsStyle="success" className="text-center">
                         Quiz finished!
                     </Alert>
                 ) : null}
                 {error ? (
-                    <Alert bsStyle="danger">
+                    <Alert bsStyle="danger" className="text-center">
                         {error}
                     </Alert>
                 ) : null}
                 {Object.keys(activeQuestion).length && activeQuestion.question ? (
                     <div>
-                        <h2>{activeQuestion.question.name}</h2>
-                        <h3><Countdown date={Date.now() + 10000} /></h3>
+                        <h2 className="text-center">{activeQuestion.question.name}</h2>
+                        <h3 className="text-center"><Countdown date={Date.now() + 10000} /></h3>
                         <ListGroup>
                             {activeQuestion.question.answers.map((answer, answerId) => (
                                 <ListGroupItem bsStyle={this.getAnswerStyle(answerId)} key={answerId} onClick={() => this.handleAnswerClick(answerId)} >
@@ -154,12 +154,14 @@ class Quiz extends Component {
                         ))}
                     </tbody>
                 </Table>
-                <Button onClick={() => {
-                    leaveQuizRequest();
-                    history.push("/dashboard");
-                }} bsStyle="danger">
-                    Quit
-                </Button>
+                <div className="text-center">
+                    <Button onClick={() => {
+                        leaveQuizRequest();
+                        history.push("/dashboard");
+                    }} bsStyle="danger">
+                        Quit
+                    </Button>
+                </div>
             </Col>
         );
     }
