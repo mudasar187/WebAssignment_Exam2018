@@ -12,8 +12,8 @@ export default class Dashboard extends Component {
           <Header />
           <Jumbotron>
               <h2 className="text-center">Join a Quiz</h2>
-              <h5 style={{ float: "left" }}>Name</h5>
-              <h5 style={{ float: "right" }}>Current players / Required players</h5>
+              <br/>
+              <h5>Name <span style={{ float: "right" }}>Current players / Required players</span></h5>
             <QuizList />
           </Jumbotron>
           <Footer />

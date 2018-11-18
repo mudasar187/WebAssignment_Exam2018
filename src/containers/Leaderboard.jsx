@@ -28,7 +28,7 @@ class Leaderboard extends Component {
         {data.map((user, index) => (
           <ListGroupItem key={index}>
             <b>
-              {user.name} : {user.total_points}
+              {user.name} <span style={{ float: "right" }}>{user.total_points}</span>
             </b>
           </ListGroupItem>
         ))}

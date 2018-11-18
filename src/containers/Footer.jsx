@@ -5,7 +5,7 @@ function Footer() {
   return (
     <footer>
       <Grid>
-        <div className="text-center big copyright">
+        <div className="text-center copyright">
           &copy; {new Date().getFullYear()} QuizGame
         </div>
       </Grid>

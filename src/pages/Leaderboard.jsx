@@ -12,6 +12,8 @@ export default class Leaderboard extends Component{
 					<Header />
 					<Jumbotron>
 							<h2 className="text-center">Leaderboard</h2>
+							<br/>
+							<h5>Username <span style={{ float: "right" }}>Total points</span></h5>
 						<LeaderboardContainer />
 					</Jumbotron>
 					<Footer />
