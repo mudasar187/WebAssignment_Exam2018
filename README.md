@@ -13,18 +13,17 @@ On the leaderboard their points is listed up in descending sort, with the player
   
 
 #### Travis
-Also used travis to check the build.
-(Add travis when repo is public)
+Also used travis for this exam, url is removed because of private token, adding new markdown travis link when repo is public
 
+---
   
 ### How to run
 
 All these commands can be run from root folder:
   
 ##### - Docker
-- run -> `docker-compose up` , if you want run in detached mode `docker-compose up -d`
-	- Note: Note: If are running windows you may have to restart Docker and run `docker-compose 	up -d` [again (read this issue)](https://github.com/docker/for-win/issues/573#issuecomment-301513210) 
-    due to a [bug](https://github.com/docker/for-win/issues/573) in the mongoDB container.
+- run -> `docker-compose up` , if you want run in detached mode then `docker-compose up -d`
+	- Note: Note: If are running windows you may have to restart Docker and run `docker-compose up -d` again [read this issue](https://github.com/docker/for-win/issues/573#issuecomment-301513210) due to a [bug](https://github.com/docker/for-win/issues/573) in the mongoDB container.
 - verify that all nodes are up `docker-compose ps`
 - if `web_app`exit, run again `docker-compose up -d`
 - application will be accessible at [http://localhost:8080/](http://localhost:8080/)
@@ -35,7 +34,7 @@ All these commands can be run from root folder:
 
 ##### - Local (optional)
 - install dependencies -> `npm install`
-- connected to mongodb on local machine -> `npm run local-dev`
+- connected to mongodb on local machine (this means you must start mongodb on local machine if you want to run with this command -> `npm run local-dev`
 - connected to mongodb on [www.mlab.com](www.mlab.com) (currently there is my own account, if you want to use your own, create one and change url in file `/server/config/keys_dev.js`
 
 
@@ -44,7 +43,7 @@ All these commands can be run from root folder:
 - accessible on this url -> [QuizGame](www.link.com)
 - keep in mind that you need to wait a little bit before page is shown up, because Heroku servers tend to go in hibernate state after 30 minutes of inactivity
   
-  
+---  
 
 ### Tools
 
@@ -64,12 +63,13 @@ All these commands can be run from root folder:
 	-   Iterating arrays, objects, & strings
 	-   Manipulating & testing values
 	-   Creating composite functions  
--   **express-session** - a session middleware
+- **express-session** - a session middleware
 - **connect-mongo** (optional) - MongoDB session store for [Connect](https://github.com/senchalabs/connect) and [Express](http://expressjs.com/)
 	- if you want to store sessions in database, then you can just enable it by remove line comment in `server.js` file at line 30.
 - **Nodemon** - is a utility that will monitor for any changes in your source and automatically restart your server. Perfect for development.
 - **Concurrently** - Run multiple commands concurrently. Like `npm run watch-js & npm run watch-less` but better.
 
+---
 
 ### HTTP methods
 Auth:
@@ -82,19 +82,58 @@ Quizzes:
 - /GET -> /stats (get user stats sorted)
 - /GET -> / (get quizzes)
 
+---
 
 ### Folder structure
 
 ![skjermbilde 2018-11-18 kl 12 27 53](https://user-images.githubusercontent.com/29889280/48671763-83acdd80-eb2d-11e8-91e4-1df671bbbf75.png)
 
+##### - Backend
 - **public** - holds the HTML template of our app
-- **config** - environment configs
-- **database** - models and database connection
-- **passport** - passport authentication
-- **routes** - api routes
-- **seeder** - defaultdata.json and a file which helps us adding these to database when running application
-- **websockets** -   connection model and management for connections
-
+- **server/config** - database url config based on environment
+- **server/database** - database models and connection
+- **server/passport** - passport authentication
+- **server/routes** - api routes
+- **server/seeder** - defaultdata.json and a file which helps us adding these to database when running application
+- **server/websockets** -   connection model manages the Websocket connections
+- `server/server.js` file - server setup  
+##### - Frontend
+- **src/config** - config for websocket url
+- **src/containers** - react containers
+- **src/pages** - react pages
+- **src/redux** - redux files
+	- **reducers** - the application's state changes in response to [actions](https://redux.js.org/basics/actions) sent to the store
+	- **store** - [store](https://redux.js.org/api/store) that holds the complete state tree of the app.
+- `src/redux/actionsTypes.js` , `src/redux/actions.js` files - payloads of information that send data from application to store
+- `src/redux/selectors.js` - functions that take Redux state as an argument and return some data to pass to the component.
+- `src/services/ApiService.js` - Service that manages HTTP communication with API
+- `src/services/ApplicationService.js` - Service that manages the main functionality of the app
+- `src/services/WebSocketService.js` - Service manages the Websocket connections
+- `src/index.js` - handle things such like react routes, provider and etc.
+- `.dockerignore` - ignoring files for docker build
+- `.gitingore` - ignoring files for github
+- `.travis.yml` - run build on [https://travis-ci.org](https://travis-ci.org)
+- `docker-compose.yml` - config for defining and running multi-container Docker
+- `Dockerfile`- contains commands, in order, needed to build the given image
+- `package.json` - holds metadata relevant to the project
+- `Procfile` - declaring command run by application's dynos on the Heroku platform
+---
 
 ### Evaluation
+This exam was completed by making all the requirements set for the exam
+ - [x] Docker with MongoDB database
+ - [x] Heroku
+ - [x] Redux
+ - [x] MongoDB database
+
+I'm satisfied with the result, but could have done a little more styling of the page with CSS. Could added admin page so a admin could add more quizzes if i have better time, and created more tests. But tests with websocket part is pretty hard.
+
+
+### Recources
+- Udemy [The Complete React Web Developer Course (with Redux)](https://www.udemy.com/react-2nd-edition/)
+- Udemy [MERN Stack Front To Back: React, Redux, Node](https://www.udemy.com/mern-stack-front-to-back/)
+- Youtube - [Complete React Tutorial](https://www.youtube.com/watch?v=OxIDLw0M-m0&list=PL4cUxeGkcC9ij8CfkAY2RAGb-tmkNwQHG)
+- Youtube - [NodeJS Tutorial for beginners](https://www.youtube.com/watch?v=w-7RQ46RgxU&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp) and based on previous knowledge of NodeJS.
+- YouTube - [ReactCasts](https://www.youtube.com/channel/UCZkjWyyLvzWeoVWEpRemrDQ/videos)
+- Quiz Questions - (refill this when adding more quizzes)
 
