@@ -1,6 +1,6 @@
 export const getAllQuizzes = store => store.quizzes.get('allQuizzes').toJS();
 export const getQuizError = store => store.quizzes.get('error');
-export const getQuizIsWaiting = store => store.quizzes.get('isWaiting');
+export const getWaitForPlayersCount = store => store.quizzes.get('waitForPlayersCount');
 export const getQuizIsInProgress = store => store.quizzes.get('isInProgress');
 export const getQuizIsFinished = store => store.quizzes.get('isFinished');
 export const getQuizIsUnexpectedFinished = store => store.quizzes.get('isUnexpectedFinished');
@@ -14,7 +14,7 @@ export const getUsersOnline = store => store.quizzes.get('usersOnline');
 export default {
     getAllQuizzes,
     getQuizError,
-    getQuizIsWaiting,
+    getWaitForPlayersCount,
     getQuizIsInProgress,
     getQuizName,
     getIsUserLoggedIn,

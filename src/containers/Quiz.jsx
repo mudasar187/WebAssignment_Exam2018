@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Countdown from 'react-countdown-now';
 import actions from '../redux/actions';
 import selectors from '../redux/selectors';
-import { ListGroup, ListGroupItem, Col, Alert, Button, Table } from 'react-bootstrap';
+import { ListGroup, ListGroupItem, Col, Alert, Button, Table, Label } from 'react-bootstrap';
+
+const TIME_TO_ANSWER_QUESTION = 10;
 
 class Quiz extends Component {
 
@@ -17,7 +18,7 @@ class Quiz extends Component {
         answerQuestionRequest: PropTypes.func.isRequired,
         data: PropTypes.object,
         error: PropTypes.string,
-        isWaiting: PropTypes.bool.isRequired,
+        waitForPlayersCount: PropTypes.number.isRequired,
         isInProgress: PropTypes.bool.isRequired,
         isFinished: PropTypes.bool.isRequired,
         isUnexpectedFinished: PropTypes.bool.isRequired,
@@ -34,6 +35,37 @@ class Quiz extends Component {
         super(props);
 
         this.getAnswerStyle = this.getAnswerStyle.bind(this);
+        this.handleTimerTick = this.handleTimerTick.bind(this);
+        this.handleStartTimer = this.handleStartTimer.bind(this);
+        this.handleStopTimer = this.handleStopTimer.bind(this);
+
+        this.state = {
+            timer: TIME_TO_ANSWER_QUESTION,
+            isPaused: true
+        }
+    }
+
+    handleTimerTick() {
+        this.setState({ timer : this.state.timer - 1 });
+    }
+
+    handleStartTimer() {
+        clearInterval( this.interval );
+        this.setState({ timer : TIME_TO_ANSWER_QUESTION, isPaused: true });
+
+		this.interval = setInterval(this.handleTimerTick, 1000);
+        this.setState({ isPaused : false });
+    }
+
+    handleStopTimer() {
+        clearInterval( this.interval );
+        this.setState({ isPaused : true });
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.activeQuestion.questionId !== prevProps.activeQuestion.questionId) {
+            this.handleStartTimer();
+        }
     }
 
     componentWillMount() {
@@ -57,8 +89,11 @@ class Quiz extends Component {
         this.props.answerQuestionRequest({
             quizId: this.props.quizId,
             questionId: this.props.activeQuestion.questionId,
-            answerId: answerId
+            answerId: answerId,
+            answerSeconds: this.state.timer
         });
+
+        this.handleStopTimer();
     }
 
     getAnswerStyle(answerId) {
@@ -86,7 +121,7 @@ class Quiz extends Component {
             error,
             history,
             leaveQuizRequest,
-            isWaiting,
+            waitForPlayersCount,
             isInProgress,
             isFinished,
             isUnexpectedFinished,
@@ -95,12 +130,14 @@ class Quiz extends Component {
             activePlayers
         } = this.props;
 
+        const timer = new Date(this.state.timer * 1000);
+
         return (
             <Col>
                 <h2 className="text-center">{quizName}</h2>
-                {isWaiting ? (
+                {waitForPlayersCount !== 0 && !isInProgress ? (
                     <Alert bsStyle="info" className="text-center">
-                        Wait for other user to join...
+                        Wait for other players to join: {waitForPlayersCount}
                     </Alert>
                 ) : null}
                 {isInProgress ? (
@@ -126,7 +163,12 @@ class Quiz extends Component {
                 {Object.keys(activeQuestion).length && activeQuestion.question ? (
                     <div>
                         <h2 className="text-center">{activeQuestion.question.name}</h2>
-                        <h3 className="text-center"><Countdown date={Date.now() + 10000} /></h3>
+                        <h3 className="text-center">
+                            <Label bsStyle={this.state.isPaused ? "warning" : "primary"}>
+                                00:{timer.getSeconds() < 10 ? '0' : ''}{timer.getSeconds()}
+                            </Label>
+                            <br/>
+                        </h3>
                         <ListGroup>
                             {activeQuestion.question.answers.map((answer, answerId) => (
                                 <ListGroupItem bsStyle={this.getAnswerStyle(answerId)} key={answerId} onClick={() => this.handleAnswerClick(answerId)} >
@@ -170,7 +212,7 @@ class Quiz extends Component {
 
 const mapStateToProps = (state) => ({
     error: selectors.getQuizError(state),
-    isWaiting: selectors.getQuizIsWaiting(state),
+    waitForPlayersCount: selectors.getWaitForPlayersCount(state),
     quizName: selectors.getQuizName(state),
     isInProgress: selectors.getQuizIsInProgress(state),
     isFinished: selectors.getQuizIsFinished(state),

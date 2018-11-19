@@ -68,13 +68,14 @@ class ApplicationService {
   /*
         Sends request to answer question
     */
-  answerQuestionRequest({ quizId, questionId, answerId }) {
+  answerQuestionRequest({ quizId, questionId, answerId, answerSeconds }) {
     const obj = {
       action: "answer_question_request",
       payload: {
         quizId: quizId,
         questionId: questionId,
-        answerId: answerId
+        answerId: answerId,
+        answerSeconds: answerSeconds
       }
     };
 

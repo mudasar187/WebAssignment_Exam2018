@@ -23,7 +23,7 @@ const StateModel = Record({
   activeQuestion: activeQuestionModel(),
   activePlayers: [],
   error: null,
-  isWaiting: false,
+  waitForPlayersCount: 0,
   isInProgress: false,
   isFinished: false,
   isUnexpectedFinished: false,
@@ -48,6 +48,9 @@ const QuizzesReducer = (state = initialState, action) => {
         mutant.set("error", null);
         mutant.set("activePlayers", []);
         mutant.set("activeQuestion", new Map());
+        mutant.set("isInProgress", false);
+        mutant.set("isFinished", false);
+        mutant.set("isUnexpectedFinished", false);
       });
     case actionTypes.JOIN_QUIZ_REJECT:
       return state.withMutations(mutant => {
@@ -59,14 +62,11 @@ const QuizzesReducer = (state = initialState, action) => {
       });
     case actionTypes.JOIN_QUIZ_WAIT:
       return state.withMutations(mutant => {
-        mutant.set("isWaiting", true);
-        mutant.set("isInProgress", false);
-        mutant.set("isFinished", false);
-        mutant.set("isUnexpectedFinished", false);
+        mutant.set("waitForPlayersCount", action.payload);
       });
     case actionTypes.START_QUIZ_SUCCESS:
       return state.withMutations(mutant => {
-        mutant.set("isWaiting", false);
+        mutant.set("waitForPlayersCount", 0);
         mutant.set("isInProgress", true);
         mutant.set("isFinished", false);
         mutant.set("isUnexpectedFinished", false);
@@ -75,7 +75,7 @@ const QuizzesReducer = (state = initialState, action) => {
       });
     case actionTypes.FINISH_QUIZ_SUCCESS:
       return state.withMutations(mutant => {
-        mutant.set("isWaiting", false);
+        mutant.set("waitForPlayersCount", 0);
         mutant.set("isInProgress", false);
         mutant.set("isFinished", true);
         mutant.set("activeQuestion", new Map());

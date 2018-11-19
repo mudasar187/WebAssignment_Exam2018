@@ -98,32 +98,43 @@ class WebsocketService {
                     Executed when the user leaves the quiz
                 */
                 case 'leave_quiz_request':
-                    Quiz.update(
+                    Quiz.findOneAndUpdate(
                         { players: { $in: [String(userId)] } },
                         { $pull: { players: String(userId) } },
-                        { returnOriginal: false }
-                    ).then(() => {
-                        User.update(
-                            {_id: new ObjectID(userId)},
-                            {$set: {activeQuizId: null}},
-                            { returnOriginal: false }
-                        ).then(() => {
-                            console.log("User left quiz!: ", userId);
+                        { new: true },
+                        (err, quizData) => {
+                            User.update(
+                                {_id: new ObjectID(userId)},
+                                {$set: {activeQuizId: null}},
+                                { returnOriginal: false }
+                            ).then(() => {
+                                console.log("User left quiz!: ", userId);
 
-                            // Inform the user that he has left the quiz
-                            this.send(userConnection.ws, {
-                                action: 'leave_quiz_request',
-                                payload: true,
-                            });
+                                if (quizData) {
+                                    const playerConnections = this.connections.filter((c) => quizData.players.includes(c.userId));
+                                    playerConnections.forEach((connection) => {
+                                        this.send(connection.ws, {
+                                            action: 'join_quiz_wait',
+                                            payload: quizData.maxPlayersCount - quizData.players.length
+                                        });
+                                    });
+                                }
 
-                            // Inform other players that a user left the quiz
-                            this.connections.forEach((connection) => {
-                                this.send(connection.ws, {
-                                    action: 'someone_left_quiz'
+                                // Inform the user that he has left the quiz
+                                this.send(userConnection.ws, {
+                                    action: 'leave_quiz_request',
+                                    payload: true,
                                 });
-                            });
-                        });
-                    });
+
+                                // Inform other players that a user left the quiz
+                                this.connections.forEach((connection) => {
+                                    this.send(connection.ws, {
+                                        action: 'someone_left_quiz'
+                                    });
+                                });
+                            })
+                        }
+                    );
                     return;
                 /*
                     Executed when the user joins the quiz
@@ -163,11 +174,15 @@ class WebsocketService {
                                 });
 
                                 Quiz.findOne({_id: new ObjectID(quiz._id)}, (err, quizData) => {
+                                    const playerConnections = this.connections.filter((c) => quizData.players.includes(c.userId));
+
                                     if (quizData.players.length < quizData.maxPlayersCount) {
-                                        // Inform the user to wait for other players
-                                        return this.send(userConnection.ws, {
-                                            action: 'join_quiz_wait',
-                                            payload: quizData.maxPlayersCount - quizData.players.length
+                                        // Inform the users to wait for other players
+                                        return playerConnections.forEach((connection) => {
+                                            this.send(connection.ws, {
+                                                action: 'join_quiz_wait',
+                                                payload: quizData.maxPlayersCount - quizData.players.length
+                                            });
                                         });
                                     }
 
@@ -292,16 +307,16 @@ class WebsocketService {
                     Executed when the user asnwers a question
                 */
                 case 'answer_question_request':
-                    const { quizId, questionId, answerId } = payload;
+                    const { quizId, questionId, answerId, answerSeconds } = payload;
 
                     Quiz.findOne({_id: new ObjectID(quizId)}, (err, quiz) => {
                         if (err) return;
 
                         const isCorrect = quiz.questions[questionId]["answer_id"] === parseInt(answerId)
 
-                        // Increase the user points if question is correct
+                        // Increase the user points by the number of seconds left to answer if question is correct
                         if (isCorrect) {
-                            User.update({_id: new ObjectID(userId)}, {$inc: {'points': 1}}, () => {
+                            User.update({_id: new ObjectID(userId)}, {$inc: {'points': answerSeconds}}, () => {
                                 console.log("User bumped!", userId);
                             });
                         }
@@ -327,7 +342,10 @@ class WebsocketService {
     */
    send(ws, obj) {
         const message = JSON.stringify(obj);
-        ws.send(message);
+
+        if (ws.readyState === 1) {
+            ws.send(message);
+        }
     }
 }
 
