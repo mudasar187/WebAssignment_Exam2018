@@ -54,6 +54,8 @@ All these commands can be run from root folder:
 
 ### Tools
 
+- **create-react-app** - Used to build the frontend
+
 - **Express** - backend
 - **React** - frontend
 - **Redux** - state container for JavaScript
