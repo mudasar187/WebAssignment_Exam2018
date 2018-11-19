@@ -1,5 +1,5 @@
 module.exports = {
-  webSocketURL: "wss://" + window.location.host
+  webSocketURL: "ws://" + window.location.host
 };
 /*
   Note that we have window.location.host

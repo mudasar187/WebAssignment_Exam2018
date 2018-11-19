@@ -6,7 +6,7 @@
   
 ## QuizGame Application
 
-A web-based application where multiple users can join quiz and play against others using WebSockets. When a user sign up and join a game he/she need to wait until room is full before the game start. Different quizzes can have different requirement for max players. When the game start, a user have 10 seconds to answer a question before the next question show up. If both finish the game they achive the points and the points get added to their totalpoints which is showed in leaderboard. If there is a quiz with two max players, and one of them quit, the other will get notified and the game will be cancel because you cant play alone. The points will also be lost if they did not finish the game. But if there is more than 2 players, and one will quit, the others can just continue playing the game. They will se on the scoreboard under the game is running, that the user who left is gone. This will happends if they click `Quit` or exit browser by clicking `X`. The other user who continue playing the game will keep their points. 
+A web-based application where multiple users can join quiz and play against other users using WebSockets. When a user sign up and join a game he/she need to wait until room is full before the game start. Different quizzes can have different requirement for max players. When the game start, a user have 10 seconds to answer a question before the next question show up. If both finish the game they achive the points and the points get added to their totalpoints which is showed in leaderboard. If there is a quiz with two max players, and one of them quit, the other will get notified and the game will be cancel because you cant play alone. The points will also be lost if they did not finish the game. But if there is more than 2 players, and one will quit, the others can just continue playing the game. They will se on the scoreboard under the game is running, that the user who left is gone. This will happends if they click `Quit` or exit browser by clicking `X`. The other user who continue playing the game will keep their points. 
 The points are calculated by the number of seconds the user answered in. The more seconds left, the better the points. If user answered in 4 seconds, he gets 6 points (10 - 4 = 6)
 
 On the leaderboard their points is listed up in descending sort, with the player with most points on top. 
@@ -14,7 +14,7 @@ Also marked with a star. If there is two players or more with same points, then 
   
 
 #### Travis
-Also used travis for this exam, url is removed because of private token, adding new markdown travis link when repo is public
+Also used travis for this repo, url is removed because of private token, adding new markdown travis link when repo is public
 
 ---
   
@@ -41,9 +41,9 @@ All these commands can be run from root folder:
 
 ##### - Heroku
 - application also deployed to [https://www.heroku.com/](https://www.heroku.com/)
-- accessible on this url -> [QuizGame](www.link.com)
+- application accessible on this url -> [QuizGame](https://radiant-island-32328.herokuapp.com/)
 - keep in mind that you need to wait a little bit before page is shown up, because Heroku servers tend to go in hibernate state after 30 minutes of inactivity
-  
+
 ---  
 
 ### Tools
@@ -137,5 +137,4 @@ I'm satisfied with the result, but could have done a little more styling of the 
 - Youtube - [NodeJS Tutorial for beginners](https://www.youtube.com/watch?v=w-7RQ46RgxU&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp) and based on previous knowledge of NodeJS.
 - YouTube - [ReactCasts](https://www.youtube.com/channel/UCZkjWyyLvzWeoVWEpRemrDQ/videos)
 - Quiz Questions - [Quiz Questions](https://www.quiz-questions.net/)
-- Star image - [Star](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdW5N2wb9xtm40foZZHzwq55gFybTK6jChvTngEEQ58zr6rHdE)
 
