@@ -88,8 +88,9 @@ Quizzes:
 
 ![skjermbilde 2018-11-18 kl 12 27 53](https://user-images.githubusercontent.com/29889280/48671763-83acdd80-eb2d-11e8-91e4-1df671bbbf75.png)
 
-##### - Backend
 - **public** - holds the HTML template of our app
+
+##### - Backend
 - **server/config** - database url config based on environment
 - **server/database** - database models and connection
 - **server/passport** - passport authentication

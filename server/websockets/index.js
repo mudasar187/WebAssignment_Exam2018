@@ -131,7 +131,7 @@ class WebsocketService {
                 case 'join_quiz_request':
                     Quiz.findOne({ _id: payload.quizId }, (err, quiz) => {
                         // Return if there are no empty places in quiz
-                        if (quiz.players.length >= 2) return "";
+                        if (quiz.players.length >= quiz.maxPlayersCount.length) return "";
 
                         // Return if the user is already part of the quiz
                         if (quiz.players.indexOf(userId) > -1) return "";
@@ -192,8 +192,8 @@ class WebsocketService {
                                             User.find({activeQuizId: payload.quizId}, {"name": true, "points": true}, (err, activePlayers) => {
                                                 console.log("activePlayers", activePlayers);
 
-                                                // Finish quiz if other user disconnected
-                                                if (activePlayers.length < quizData.maxPlayersCount) {
+                                                // Finish quiz if there is less than 2 activePlayers
+                                                if (activePlayers.length < 2) {
                                                     clearInterval(interval);
 
                                                     return Quiz.findOne({_id: new ObjectID(quiz._id)}, (err, quizData) => {
