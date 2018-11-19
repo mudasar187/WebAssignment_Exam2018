@@ -9,7 +9,6 @@ const secretToken = require("../config/jwtSecret");
  * Sign up user
  */
 router.post("/signup", (req, res) => {
-  console.log("user signup");
 
   const { name, password } = req.body;
 
@@ -27,7 +26,7 @@ router.post("/signup", (req, res) => {
 
   User.findOne({ name: name }, (err, user) => {
     if (err) {
-      console.log("User.js post error: ", err);
+      throw err;
     } else if (user) {
       res.json({
         error: `Sorry, already a user with the name: ${name}`
@@ -51,8 +50,6 @@ router.post("/signup", (req, res) => {
 router.post(
   "/login",
   function(req, res, next) {
-    console.log("routes/user.js, login, req.body: ");
-    console.log(req.body);
     next();
   },
   passport.authenticate("local"),

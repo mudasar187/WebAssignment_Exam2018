@@ -34,7 +34,6 @@ class WebSocketService {
       if (this.isConnected) {
         return;
       }
-      console.log("WebSocketService: connecting...");
       this.connect();
     }, 3000);
   }
@@ -182,18 +181,14 @@ class WebSocketService {
         Connects to websockets
     */
   connect() {
-    console.log(WEB_SOCKET_URL);
     const webSocketConnection = new WebSocket(WEB_SOCKET_URL);
     this.webSocketConnection = webSocketConnection;
 
     this.webSocketConnection.onopen = () => {
       this.isConnected = true;
 
-      console.log("WebSocketService: connected");
-
       this.webSocketConnection.onmessage = event => {
         this.parseMessage(_.get(event, "data"));
-        console.log("Mesage from the server: ", event.data);
       };
     };
 

@@ -34,18 +34,12 @@ class WebsocketService {
 
             // Listen to messages on socket
             ws.on('message', (msg) => {
-
-                console.log("SERVER: message from a client", msg);
-
                 const message = this.decodeMessage(msg);
                 this.parseMessage(socketId, message);
             });
 
             // Listen when connection was closed
             ws.on('close', () => {
-
-                console.log("Someone disconnected from the server", socketId);
-
                 const closeConnection = this.connections.get(socketId);
                 const userId = _.toString(_.get(closeConnection, 'userId', null));
 
@@ -108,7 +102,6 @@ class WebsocketService {
                                 {$set: {activeQuizId: null}},
                                 { returnOriginal: false }
                             ).then(() => {
-                                console.log("User left quiz!: ", userId);
 
                                 if (quizData) {
                                     const playerConnections = this.connections.filter((c) => quizData.players.includes(c.userId));
@@ -190,10 +183,6 @@ class WebsocketService {
                                         const playerConnections = this.connections.filter((c) => quizData.players.includes(c.userId));
                                         let questionCounter = 0;
 
-                                        this.connections.forEach((connection) => {
-                                            console.log("connection", connection);
-                                        });
-
                                         // Inform other players that quiz has started
                                         playerConnections.forEach((connection) => {
                                             this.send(connection.ws, {
@@ -205,7 +194,6 @@ class WebsocketService {
                                         // Send questions one by one to playes
                                         const questionAsk = () => {
                                             User.find({activeQuizId: payload.quizId}, {"name": true, "points": true}, (err, activePlayers) => {
-                                                console.log("activePlayers", activePlayers);
 
                                                 // Finish quiz if there is less than 2 activePlayers
                                                 if (activePlayers.length < 2) {
@@ -223,7 +211,6 @@ class WebsocketService {
                                                                             total_points: user.total_points + user.points
                                                                         }
                                                                     }, () => {
-                                                                        console.log("User updated", userId);
                                                                     });
                                                                 });
                                                             });
@@ -258,7 +245,6 @@ class WebsocketService {
                                                                             total_points: user.total_points + user.points
                                                                         }
                                                                     }, () => {
-                                                                        console.log("User updated");
                                                                     });
                                                                 });
                                                             });
@@ -317,7 +303,6 @@ class WebsocketService {
                         // Increase the user points by the number of seconds left to answer if question is correct
                         if (isCorrect) {
                             User.update({_id: new ObjectID(userId)}, {$inc: {'points': answerSeconds}}, () => {
-                                console.log("User bumped!", userId);
                             });
                         }
 
