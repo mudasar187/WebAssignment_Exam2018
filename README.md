@@ -127,7 +127,7 @@ This exam was completed by making all the requirements set for the exam
  - [x] Redux
  - [x] MongoDB database
 
-I'm satisfied with the result, but could have done a little more styling of the page with CSS. Could added admin page so a admin could add more quizzes if i have better time, and created more tests. But tests with websocket part is pretty hard.
+I'm satisfied with the result, but could have done a little more styling of the page with CSS. Could added admin page so a admin could add more quizzes if i have better time, and more tests. But tests with websocket part is pretty hard.
 
 
 ### Recources
@@ -136,5 +136,5 @@ I'm satisfied with the result, but could have done a little more styling of the 
 - Youtube - [Complete React Tutorial](https://www.youtube.com/watch?v=OxIDLw0M-m0&list=PL4cUxeGkcC9ij8CfkAY2RAGb-tmkNwQHG)
 - Youtube - [NodeJS Tutorial for beginners](https://www.youtube.com/watch?v=w-7RQ46RgxU&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp) and based on previous knowledge of NodeJS.
 - YouTube - [ReactCasts](https://www.youtube.com/channel/UCZkjWyyLvzWeoVWEpRemrDQ/videos)
-- Quiz Questions - (refill this when adding more quizzes)
+- Quiz Questions - [Quiz Questions](https://www.quiz-questions.net/)
 

@@ -1,45 +1,115 @@
 [
   {
-    "name": "Capitals",
+    "name": "Sports",
     "players": [],
     "maxPlayersCount": 2,
     "questions": [
       {
-        "name": "Whats the name of capital in Norway?",
-        "answers": ["Oslo", "Dubai", "Stockholm"],
+        "name": "In which year did Maradona score a goal with his hand?",
+        "answers": ["1986", "1987", "1989"],
         "answer_id": 0
       },
       {
-        "name": "Whats the name of capital in Germany?",
-        "answers": ["Copenhagen", "Berlin", "Jakarta"],
+        "name": "How many minutes is a rugby match?",
+        "answers": ["90 minutes", "80 minutes", "70 minutes"],
         "answer_id": 1
       },
       {
-        "name": "Whats the capital in USA?",
-        "answers": ["Miami", "New York", "Washington DC"],
+        "name": "How matches did Mohammed Ali lose in his career?",
+        "answers": ["0", "2", "1"],
+        "answer_id": 2
+      },
+      {
+        "name": "In which sport can you win the Davis Cup?",
+        "answers": ["Tennis", "Swimming", "Boxing"],
+        "answer_id": 0
+      },
+      {
+        "name": "What was the Olympic city of 1992?",
+        "answers": ["Oslo", "Dubai", "Barcelona"],
+        "answer_id": 2
+      },
+      {
+        "name": "Who was the champion of the Tour de France from 1999 to 2005?",
+        "answers": ["Eddy Merckx", "Marcell Lannister", "Lance Armstrong"],
+        "answer_id": 2
+      },
+      {
+        "name": "Which car won Fernando Alonso his first tittle in Formula 1 with?",
+        "answers": ["Citroen", "Renault", "Toyota"],
+        "answer_id": 1
+      },
+      {
+        "name": "How many players has a hockey team got on the ice?",
+        "answers": ["Six players", "7 players", "8 players"],
+        "answer_id": 1
+      },
+      {
+        "name": "At what number does one begin when playing Darts?",
+        "answers": ["The number 401", "The number 601", "The number 501"],
+        "answer_id": 2
+      },
+      {
+        "name": "How long is an Olympic swimming pool?",
+        "answers": ["60 meters", "40 meters", "50 meters"],
         "answer_id": 2
       }
     ]
   },
   {
-    "name": "Programming",
+    "name": "General",
     "players": [],
     "maxPlayersCount": 3,
     "questions": [
       {
-        "name": "Is JavaScript same as Java?",
-        "answers": ["No", "Yes", "Maybe"],
-        "answer_id": 0
-      },
-      {
-        "name": "Do we have Spring in React?",
-        "answers": ["Yes", "No", "Its coming"],
+        "name": "What is the name of the German airline?",
+        "answers": ["SAS", "Lufthansa", "Qatar"],
         "answer_id": 1
       },
       {
-        "name": "Is assembly faster then JavaScript?",
-        "answers": ["No", "Maybe", "Yes"],
+        "name": "In which European city can you find the home of Anne Frank?",
+        "answers": ["Berlin", "Warsawa", "Amsterdam"],
         "answer_id": 2
+      },
+      {
+        "name": "How many stars has the American flag got?",
+        "answers": ["51", "50", "49"],
+        "answer_id": 1
+      },
+      {
+        "name": "How long is the Great Wall of China?",
+        "answers": ["4000 miles", "4500 miles", "3000 miles"],
+        "answer_id": 0
+      },
+      {
+        "name": "Who invented Ferrari?",
+        "answers": ["Benzo Ferrari", "John Ferrari", "Enzo Ferrari"],
+        "answer_id": 2
+      },
+      {
+        "name": "In what year did princess diana die?",
+        "answers": ["1998", "1996", "1997"],
+        "answer_id": 2
+      },
+      {
+        "name": "What is both a French wine region and a luxury American automobile?",
+        "answers": ["Ferrari", "Caddilac", "Mercedes"],
+        "answer_id": 1
+      },
+      {
+        "name": "How many stars feature on the flag of New Zealand?",
+        "answers": ["4 stars", "5 stars", "6 stars"],
+        "answer_id": 0
+      },
+      {
+        "name": "What colour to do you get when you mix red and white?",
+        "answers": ["Blue", "Purple", "Pink"],
+        "answer_id": 2
+      },
+      {
+        "name": "Which famous British women murderer of the 19th century was never arrested?",
+        "answers": ["Check the Ripper", "Jack the Ripper", "Heck the Ripper"],
+        "answer_id": 1
       }
     ]
   }
