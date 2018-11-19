@@ -6,10 +6,11 @@
   
 ## QuizGame Application
 
-A web-based application where multiple users can join quiz and play against others using WebSockets. When a user sign up and join a game he/she need to wait until room is full before the game start. Different quizzes can have different requirement for max players. When the game start, a user have 10 seconds to answer a question before the next question show up. If both finish the game they achive the points and the points get added to their totalpoints which is showed in leaderboard. If a user quit the game before quiz is finished all users will ne notified. This means if a user click `Quit` button or close the browser by hitting `X`, and this will also make user loose all their points because they did not finish the game.
-The points is based on the seconds they use to answer the question. If the question take 3 seconds to answer, user get 7 points, 10 seconds round - 3 seconds to answer = 7 points.
+A web-based application where multiple users can join quiz and play against others using WebSockets. When a user sign up and join a game he/she need to wait until room is full before the game start. Different quizzes can have different requirement for max players. When the game start, a user have 10 seconds to answer a question before the next question show up. If both finish the game they achive the points and the points get added to their totalpoints which is showed in leaderboard. If there is a quiz with two max players, and one of them quit, the other will get notified and the game will be cancel because you cant play alone. The points will also be lost if they did not finish the game. But if there is more than 2 players, and one will quit, the others can just continue playing the game. They will se on the scoreboard under the game is running, that the user who left is gone. This will happends if they click `Quit` or exit browser by clicking `X`. The other user who continue playing the game will keep their points. 
+The points are calculated by the number of seconds the user answered in. The more seconds left, the better the points. If user answered in 4 seconds, he gets 6 points (10 - 4 = 6)
 
-On the leaderboard their points is listed up in descending sort, with the player with most points on top.  
+On the leaderboard their points is listed up in descending sort, with the player with most points on top. 
+Also marked with a star. If there is two players or more with same points, then all they will be listed with a star to indicate that they are the top players. 
   
 
 #### Travis
@@ -136,4 +137,5 @@ I'm satisfied with the result, but could have done a little more styling of the 
 - Youtube - [NodeJS Tutorial for beginners](https://www.youtube.com/watch?v=w-7RQ46RgxU&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp) and based on previous knowledge of NodeJS.
 - YouTube - [ReactCasts](https://www.youtube.com/channel/UCZkjWyyLvzWeoVWEpRemrDQ/videos)
 - Quiz Questions - [Quiz Questions](https://www.quiz-questions.net/)
+- Star image - [Star](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdW5N2wb9xtm40foZZHzwq55gFybTK6jChvTngEEQ58zr6rHdE)
 

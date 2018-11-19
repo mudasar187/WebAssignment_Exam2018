@@ -137,7 +137,7 @@ class Quiz extends Component {
                 <h2 className="text-center">{quizName}</h2>
                 {waitForPlayersCount !== 0 && !isInProgress ? (
                     <Alert bsStyle="info" className="text-center">
-                        Wait for other players to join: {waitForPlayersCount}
+                        Wait for other players to join.. <br/>Missing <h4>{waitForPlayersCount}</h4> player(s) to start the game!
                     </Alert>
                 ) : null}
                 {isInProgress ? (

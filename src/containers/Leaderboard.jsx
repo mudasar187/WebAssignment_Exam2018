@@ -22,13 +22,18 @@ class Leaderboard extends Component {
 
   render() {
     const { data } = this.props;
+    const maxScore = data.length ? data[0].total_points : 0;
 
     return (
       <ListGroup>
         {data.map((user, index) => (
           <ListGroupItem key={index}>
             <b>
-              {user.name} <span style={{ float: "right" }}>{user.total_points}</span>
+              {user.name}&nbsp;&nbsp;
+              {user.total_points === maxScore && (
+                <img src="star.png" style={{ height: "2rem" }} alt="" />
+              )}
+              <span style={{ float: "right" }}>{user.total_points}</span>
             </b>
           </ListGroupItem>
         ))}

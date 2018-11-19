@@ -5,7 +5,7 @@ mongoose.promise = Promise;
 // Define userSchema
 const quizSchema = new Schema({
   name: { type: String },
-  maxPlayersCount: { type: Number },
+  maxPlayersCount: { type: Number, min: 2 },
   players: { type: Array },
   questions: { type: Array }
 });

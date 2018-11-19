@@ -41,7 +41,7 @@
       },
       {
         "name": "How many players has a hockey team got on the ice?",
-        "answers": ["Six players", "7 players", "8 players"],
+        "answers": ["6 players", "7 players", "8 players"],
         "answer_id": 1
       },
       {
@@ -109,6 +109,63 @@
       {
         "name": "Which famous British women murderer of the 19th century was never arrested?",
         "answers": ["Check the Ripper", "Jack the Ripper", "Heck the Ripper"],
+        "answer_id": 1
+      }
+    ]
+  },
+  {
+    "name": "Economy",
+    "players": [],
+    "maxPlayersCount": 2,
+    "questions": [
+      {
+        "name": "What used to be the currency of Italy?",
+        "answers": ["Dinar", "Lira", "Dollar"],
+        "answer_id": 1
+      },
+      {
+        "name": "In what country was pesetas the currency?",
+        "answers": ["Dominic Republic", "Portugal", "Spain"],
+        "answer_id": 2
+      },
+      {
+        "name": "What is the world s largest office building?",
+        "answers": ["Norways Castle", "Pentagon", "Google"],
+        "answer_id": 1
+      },
+      {
+        "name": "Which country is the origin of the car brands Daewoo and Kia?",
+        "answers": ["South Korea", "North Korea", "Japan"],
+        "answer_id": 0
+      },
+      {
+        "name": "How many digits does an IBAN number consist of?",
+        "answers": ["12 digits", "13 digits", "14 digits"],
+        "answer_id": 2
+      },
+      {
+        "name": "What was the currency of Greece before the introduction of the EURO?",
+        "answers": ["Arachme", "Brachme", "Drachme"],
+        "answer_id": 2
+      },
+      {
+        "name": "What is the biggest oil company in the United States?",
+        "answers": ["Valero Industries", "Exxon Mobile", " Chevron Corporation"],
+        "answer_id": 1
+      },
+      {
+        "name": "Where was built the first subway?",
+        "answers": ["London", "Paris", "New York"],
+        "answer_id": 0
+      },
+      {
+        "name": "Where does a car with the letters CH come from?",
+        "answers": ["Sweden", "Germany", "Switzerland"],
+        "answer_id": 2
+      },
+      {
+        "name": "In which country is Varig Airlines based?",
+        "answers": ["Chile", "Brazil", "USA"],
         "answer_id": 1
       }
     ]
