@@ -14,7 +14,7 @@ Also marked with a star. If there is two players or more with same points, then 
   
 
 #### Travis
-Also used travis for this exam, url is removed because of private token, adding new markdown travis link when repo is public
+Also used travis for this repo, url is removed because of private token, adding new markdown travis link when repo is public
 
 ---
   
@@ -43,13 +43,7 @@ All these commands can be run from root folder:
 - application also deployed to [https://www.heroku.com/](https://www.heroku.com/)
 - application accessible on this url -> [QuizGame](https://radiant-island-32328.herokuapp.com/)
 - keep in mind that you need to wait a little bit before page is shown up, because Heroku servers tend to go in hibernate state after 30 minutes of inactivity
-- also keep in mind about this issue [heroku-websocket-connection-timepout](https://stackoverflow.com/questions/22847581/heroku-websocket-connection-timeout)
-	- there is an issue with websockets `H15 - Idle Connection` [h5-idle-connection](https://devcenter.heroku.com/articles/error-codes#h15-idle-connection)
-	- Heroku has a 55 seconds timeout for Websockets
-	- if its not working just try again, remember to create a account
-	- by some strange reason, if you get `Not Found` when click on link, try click on other links or go back to `/` and try again then its working, or refresh page
-	- added a video too show how application is working and to prove its actually working, notice the url on video
-		- Video: [QuizGame]
+
 ---  
 
 ### Tools
@@ -145,5 +139,3 @@ I'm satisfied with the result, but could have done a little more styling of the 
 - Youtube - [NodeJS Tutorial for beginners](https://www.youtube.com/watch?v=w-7RQ46RgxU&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp) and based on previous knowledge of NodeJS.
 - YouTube - [ReactCasts](https://www.youtube.com/channel/UCZkjWyyLvzWeoVWEpRemrDQ/videos)
 - Quiz Questions - [Quiz Questions](https://www.quiz-questions.net/)
-- Star image - [Star](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdW5N2wb9xtm40foZZHzwq55gFybTK6jChvTngEEQ58zr6rHdE)
-

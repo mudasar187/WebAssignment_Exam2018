@@ -30,7 +30,7 @@ ReactDOM.render(
     <Router>
       <Switch>
         <Route exact path="/" component={Homepage} />
-        <Route exact path="/sign-up" component={Signup} />
+        <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/about" component={About} />
         {/* Locked */}

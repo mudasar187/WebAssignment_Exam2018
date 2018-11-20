@@ -14,7 +14,7 @@ export default class Homepage extends Component {
             <h4>Play against other online players</h4>
             <br />
             <ButtonToolbar bsClass="text-center">
-              <Button href="/sign-up">Sign up</Button>
+              <Button href="/signup">Sign up</Button>
               &nbsp;
               <Button bsStyle="primary" href="/login">
                 Log in

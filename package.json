@@ -3,6 +3,11 @@
   "version": "0.0.8",
   "description": "A multiplayer online quiz game",
   "author": "Mudasar Ahmad",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mudasar187/WebAssignment_Exam2018.git"
+  },
   "dependencies": {
     "axios": "^0.17.1",
     "bcryptjs": "^2.4.3",

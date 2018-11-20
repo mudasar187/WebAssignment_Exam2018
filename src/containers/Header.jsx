@@ -57,7 +57,7 @@ class Header extends Component {
                     ) : (
                         <NavItem>
                             <Button onClick={() => {
-                                history.push("/sign-up");
+                                history.push("/signup");
                             }}>
                                 Sign up
                             </Button>

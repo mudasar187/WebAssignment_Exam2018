@@ -27,7 +27,7 @@ app.use(bodyParser.json());
 app.use(
   session({
     secret: "sessionsecret",
-    // store: new MongoStore({ mongooseConnection: dbConnection }), // Only if you want to save user session in database
+    // store: new MongoStore({ mongooseConnection: dbConnection }), // if you want to save user session in database
     resave: false,
     saveUninitialized: false
   })
@@ -47,10 +47,10 @@ quizSeeder.addDefaultDataToDatabase();
 // Serve static files if in production or running in docker
 if ( process.env.NODE_ENV === "production" || process.env.NODE_ENV === "docker" ) {
   // Set static folder
-  app.use("/", express.static("build"));
+  app.use(express.static(path.join(__dirname, '../build')));
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "build", "index.html"));
+  app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build', 'index.html'));
   });
 }
 
