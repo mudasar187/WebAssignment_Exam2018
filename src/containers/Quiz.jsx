@@ -163,12 +163,12 @@ class Quiz extends Component {
                 {Object.keys(activeQuestion).length && activeQuestion.question ? (
                     <div>
                         <h2 className="text-center">{activeQuestion.question.name}</h2>
-                        <h4>{activeQuestion.length}</h4>
                         <h3 className="text-center">
                             <Label bsStyle={this.state.isPaused ? "warning" : "primary"}>
                                 00:{timer.getSeconds() < 10 ? '0' : ''}{timer.getSeconds()}
                             </Label>
                             <br/>
+                            <h5>{this.state.isPaused ? "Wait for next question ..." : "Choose your option!"}</h5>
                         </h3>
                         <ListGroup>
                             {activeQuestion.question.answers.map((answer, answerId) => (
