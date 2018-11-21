@@ -36,7 +36,7 @@ All these commands can be run from root folder:
 ##### - Local (optional)
 - install dependencies -> `npm install`
 - connected to mongodb on local machine (this means you must start mongodb on local machine if you want to run with this command -> `npm run local-dev`
-- connected to mongodb on [www.mlab.com](www.mlab.com) (currently there is my own account, if you want to use your own, create one and change url in file `/server/config/keys_dev.js`
+- connected to mongodb on [www.mlab.com](www.mlab.com) (create a database on mLab and change url in file `/server/config/keys_dev.js`, to use this run -> `npm run mlab-dev`
 
 
 ##### - Heroku
