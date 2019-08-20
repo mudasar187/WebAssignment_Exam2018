@@ -30,7 +30,7 @@ All these commands can be run from root folder:
 - application will be accessible at [http://localhost:8080/](http://localhost:8080/)
 	- you need to sign up a new user before you can play game
 	- default quizzes are added in the database
-- stop -> `docker-compose -f docker-compose.yml down --rmi all`
+- stop -> `docker-compose -f docker-compose.yml down --rmi all` 
 
 
 ##### - Local (optional)
