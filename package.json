@@ -9,7 +9,7 @@
     "url": "https://github.com/mudasar187/WebAssignment_Exam2018.git"
   },
   "dependencies": {
-    "axios": "^0.17.1",
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
     "connect-mongo": "^2.0.1",
